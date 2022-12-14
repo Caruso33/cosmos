@@ -43,3 +43,77 @@ checkersd --help
 checkersd status --help
 checkersd query --help
 ```
+
+```shell
+❯ ignite scaffold message createPost title body
+Your saved project changes have not been committed. To enable reverting to your current state, commit your saved changes. Do you want to proceed without committing your saved changes: y
+
+modify proto/checkers/checkers/tx.proto
+modify x/checkers/client/cli/tx.go
+create x/checkers/client/cli/tx_create_post.go
+create x/checkers/keeper/msg_server_create_post.go
+modify x/checkers/module_simulation.go
+create x/checkers/simulation/create_post.go
+modify x/checkers/types/codec.go
+create x/checkers/types/message_create_post.go
+create x/checkers/types/message_create_post_test.go
+
+🎉 Created a message `createPost`.
+```
+
+```shell
+❯ mkdir x/checkers/rules
+curl https://raw.githubusercontent.com/batkinson/checkers-go/a09daeb1548dd4cc0145d87c8da3ed2ea33a62e3/checkers/checkers.go | sed 's/package checkers/package rules/' > x/checkers/rules/checkers.go
+```
+
+```shell
+❯ ignite scaffold single systemInfo nextId:uint \
+    --module checkers \
+    --no-message
+
+Your saved project changes have not been committed. To enable reverting to your current state, commit your saved changes. Do you want to proceed without committing your saved changes: y
+
+modify proto/checkers/checkers/genesis.proto
+modify proto/checkers/checkers/query.proto
+create proto/checkers/checkers/system_info.proto
+modify x/checkers/client/cli/query.go
+create x/checkers/client/cli/query_system_info.go
+create x/checkers/client/cli/query_system_info_test.go
+modify x/checkers/genesis.go
+modify x/checkers/genesis_test.go
+create x/checkers/keeper/grpc_query_system_info.go
+create x/checkers/keeper/grpc_query_system_info_test.go
+create x/checkers/keeper/system_info.go
+create x/checkers/keeper/system_info_test.go
+modify x/checkers/types/genesis.go
+modify x/checkers/types/genesis_test.go
+modify x/checkers/types/keys.go
+
+🎉 systemInfo added.
+```
+
+```shell
+❯ ignite scaffold map storedGame board turn black red \
+    --index index \
+    --module checkers \
+    --no-message
+
+
+modify proto/checkers/checkers/genesis.proto
+modify proto/checkers/checkers/query.proto
+create proto/checkers/checkers/stored_game.proto
+modify x/checkers/client/cli/query.go
+create x/checkers/client/cli/query_stored_game.go
+create x/checkers/client/cli/query_stored_game_test.go
+modify x/checkers/genesis.go
+modify x/checkers/genesis_test.go
+create x/checkers/keeper/grpc_query_stored_game.go
+create x/checkers/keeper/grpc_query_stored_game_test.go
+create x/checkers/keeper/stored_game.go
+create x/checkers/keeper/stored_game_test.go
+modify x/checkers/types/genesis.go
+modify x/checkers/types/genesis_test.go
+create x/checkers/types/key_stored_game.go
+
+🎉 storedGame added.
+```
