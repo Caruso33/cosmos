@@ -3,7 +3,7 @@ package cmd
 import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"githu.com/alice/checkers/app"
+	"github.com/alice/checkers/app"
 )
 
 func initSDKConfig() {

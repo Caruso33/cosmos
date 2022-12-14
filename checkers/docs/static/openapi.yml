@@ -44719,8 +44719,6 @@ paths:
       tags:
         - Query
 definitions:
-  alice.checkers.checkers.MsgCreatePostResponse:
-    type: object
   alice.checkers.checkers.Params:
     type: object
     description: Params defines the parameters for the module.

@@ -3,7 +3,7 @@ package types_test
 import (
 	"testing"
 
-	"githu.com/alice/checkers/x/checkers/types"
+	"github.com/alice/checkers/x/checkers/types"
 	"github.com/stretchr/testify/require"
 )
 

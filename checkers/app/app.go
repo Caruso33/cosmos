@@ -104,13 +104,13 @@ import (
 	tmos "github.com/tendermint/tendermint/libs/os"
 	dbm "github.com/tendermint/tm-db"
 
-	checkersmodule "githu.com/alice/checkers/x/checkers"
-	checkersmodulekeeper "githu.com/alice/checkers/x/checkers/keeper"
-	checkersmoduletypes "githu.com/alice/checkers/x/checkers/types"
+	checkersmodule "github.com/alice/checkers/x/checkers"
+	checkersmodulekeeper "github.com/alice/checkers/x/checkers/keeper"
+	checkersmoduletypes "github.com/alice/checkers/x/checkers/types"
 	// this line is used by starport scaffolding # stargate/app/moduleImport
 
-	appparams "githu.com/alice/checkers/app/params"
-	"githu.com/alice/checkers/docs"
+	appparams "github.com/alice/checkers/app/params"
+	"github.com/alice/checkers/docs"
 )
 
 const (

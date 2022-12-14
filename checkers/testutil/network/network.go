@@ -5,7 +5,7 @@ import (
 	"testing"
 	"time"
 
-	"githu.com/alice/checkers/app"
+	"github.com/alice/checkers/app"
 
 	"github.com/cosmos/cosmos-sdk/baseapp"
 	"github.com/cosmos/cosmos-sdk/crypto/hd"

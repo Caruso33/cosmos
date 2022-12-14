@@ -3,8 +3,8 @@ package keeper
 import (
 	"testing"
 
-	"githu.com/alice/checkers/x/checkers/keeper"
-	"githu.com/alice/checkers/x/checkers/types"
+	"github.com/alice/checkers/x/checkers/keeper"
+	"github.com/alice/checkers/x/checkers/types"
 	"github.com/cosmos/cosmos-sdk/codec"
 	codectypes "github.com/cosmos/cosmos-sdk/codec/types"
 	"github.com/cosmos/cosmos-sdk/store"

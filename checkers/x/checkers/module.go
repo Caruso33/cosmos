@@ -11,9 +11,9 @@ import (
 
 	abci "github.com/tendermint/tendermint/abci/types"
 
-	"githu.com/alice/checkers/x/checkers/client/cli"
-	"githu.com/alice/checkers/x/checkers/keeper"
-	"githu.com/alice/checkers/x/checkers/types"
+	"github.com/alice/checkers/x/checkers/client/cli"
+	"github.com/alice/checkers/x/checkers/keeper"
+	"github.com/alice/checkers/x/checkers/types"
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/codec"
 	cdctypes "github.com/cosmos/cosmos-sdk/codec/types"

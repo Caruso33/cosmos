@@ -3,10 +3,10 @@ package checkers_test
 import (
 	"testing"
 
-	keepertest "githu.com/alice/checkers/testutil/keeper"
-	"githu.com/alice/checkers/testutil/nullify"
-	"githu.com/alice/checkers/x/checkers"
-	"githu.com/alice/checkers/x/checkers/types"
+	keepertest "github.com/alice/checkers/testutil/keeper"
+	"github.com/alice/checkers/testutil/nullify"
+	"github.com/alice/checkers/x/checkers"
+	"github.com/alice/checkers/x/checkers/types"
 	"github.com/stretchr/testify/require"
 )
 

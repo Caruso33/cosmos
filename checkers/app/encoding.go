@@ -6,7 +6,7 @@ import (
 	"github.com/cosmos/cosmos-sdk/std"
 	"github.com/cosmos/cosmos-sdk/x/auth/tx"
 
-	"githu.com/alice/checkers/app/params"
+	"github.com/alice/checkers/app/params"
 )
 
 // makeEncodingConfig creates an EncodingConfig for an amino based test configuration.

@@ -4,9 +4,9 @@ import (
 	"context"
 	"testing"
 
-	keepertest "githu.com/alice/checkers/testutil/keeper"
-	"githu.com/alice/checkers/x/checkers/keeper"
-	"githu.com/alice/checkers/x/checkers/types"
+	keepertest "github.com/alice/checkers/testutil/keeper"
+	"github.com/alice/checkers/x/checkers/keeper"
+	"github.com/alice/checkers/x/checkers/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 )
 

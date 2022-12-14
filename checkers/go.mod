@@ -1,4 +1,4 @@
-module githu.com/alice/checkers
+module github.com/alice/checkers
 
 go 1.18
 
