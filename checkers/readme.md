@@ -157,3 +157,114 @@ pagination:
   total: "0"
 storedGame: []
 ```
+
+```shell
+❯ ignite scaffold message createGame black red \
+    --module checkers \
+    --response gameIndex
+
+
+modify proto/checkers/checkers/tx.proto
+modify x/checkers/client/cli/tx.go
+create x/checkers/client/cli/tx_create_game.go
+create x/checkers/keeper/msg_server_create_game.go
+modify x/checkers/module_simulation.go
+create x/checkers/simulation/create_game.go
+modify x/checkers/types/codec.go
+create x/checkers/types/message_create_game.go
+create x/checkers/types/message_create_game_test.go
+
+🎉 Created a message `createGame`.
+```
+
+`checkersd tx checkers create-game --help`
+
+```shell
+export alice=$(checkersd keys show alice -a)
+export bob=$(checkersd keys show bob -a)
+```
+
+`checkersd tx checkers create-game $alice $bob --from $alice --dry-run`
+
+```shell
+❯ checkersd tx checkers create-game $alice $bob --from $alice --gas auto
+
+gas estimate: 46262
+auth_info:
+  fee:
+    amount: []
+    gas_limit: "46262"
+    granter: ""
+    payer: ""
+  signer_infos: []
+  tip: null
+body:
+  extension_options: []
+  memo: ""
+  messages:
+  - '@type': /alice.checkers.checkers.MsgCreateGame
+    black: cosmos1qpwnlvalgdvzdzkgknr9cyeyujcqajhhv23vvy
+    creator: cosmos1qpwnlvalgdvzdzkgknr9cyeyujcqajhhv23vvy
+    red: cosmos1qz5rq46sa0hhysal7dtr36hm5mrle4p8e06xgt
+  non_critical_extension_options: []
+  timeout_height: "0"
+signatures: []
+confirm transaction before signing and broadcasting [y/N]: y
+code: 0
+codespace: ""
+data: 12300A2E2F616C6963652E636865636B6572732E636865636B6572732E4D736743726561746547616D65526573706F6E7365
+events:
+- attributes:
+  - index: true
+    key: ZmVl
+    value: ""
+  - index: true
+    key: ZmVlX3BheWVy
+    value: Y29zbW9zMXFwd25sdmFsZ2R2emR6a2drbnI5Y3lleXVqY3FhamhodjIzdnZ5
+  type: tx
+- attributes:
+  - index: true
+    key: YWNjX3NlcQ==
+    value: Y29zbW9zMXFwd25sdmFsZ2R2emR6a2drbnI5Y3lleXVqY3FhamhodjIzdnZ5LzE=
+  type: tx
+- attributes:
+  - index: true
+    key: c2lnbmF0dXJl
+    value: V1hkNlNQbDZHeVhSQzBOeGpjV3lUcUM4MlBYTnkrRnlJajNkd3ZXQ3QvaExYQVhuZ2ptNHZZQUtkdk93cURhRng2dkRHUXBpU25GbkVPRldFclEvNGc9PQ==
+  type: tx
+- attributes:
+  - index: true
+    key: YWN0aW9u
+    value: L2FsaWNlLmNoZWNrZXJzLmNoZWNrZXJzLk1zZ0NyZWF0ZUdhbWU=
+  type: message
+gas_used: "44308"
+gas_wanted: "46262"
+height: "587"
+info: ""
+logs:
+- events:
+  - attributes:
+    - key: action
+      value: /alice.checkers.checkers.MsgCreateGame
+    type: message
+  log: ""
+  msg_index: 0
+raw_log: '[{"msg_index":0,"events":[{"type":"message","attributes":[{"key":"action","value":"/alice.checkers.checkers.MsgCreateGame"}]}]}]'
+timestamp: ""
+tx: null
+txhash: 77B4273A851DBCA5BBF9B6810DF30ED4343E16EC2A13536D8190A1AB342C69BD
+```
+
+```shell
+❯ checkersd query checkers show-system-info
+SystemInfo:
+  nextId: "1"
+```
+
+```shell
+❯ checkersd query checkers list-stored-game
+pagination:
+  next_key: null
+  total: "0"
+storedGame: []
+```
