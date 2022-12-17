@@ -3,10 +3,10 @@ package keeper_test
 import (
 	"testing"
 
+	testkeeper "github.com/alice/checkers/testutil/keeper"
+	"github.com/alice/checkers/x/checkers/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/stretchr/testify/require"
-	testkeeper 	"github.com/alice/checkers/testutil/keeper"
-	"github.com/alice/checkers/x/checkers/types"
 )
 
 func TestParamsQuery(t *testing.T) {

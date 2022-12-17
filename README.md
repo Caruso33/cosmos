@@ -5,7 +5,6 @@
 ```shell
 ❯ ignite scaffold chain github.com/alice/checkers
 
-
 ⭐️ Successfully created a new blockchain 'checkers'.
 👉 Get started with the following commands:
 
@@ -16,26 +15,27 @@ Documentation: https://docs.ignite.com
 ```
 
 ```shell
-❯ cd checkers
-ignite chain serve
+❯ ignite chain serve
 Cosmos SDK's version is: stargate - v0.46.6
 
-🔄 Resetting the app state...
 🛠  Building proto...
 📦 Installing dependencies...
 🛠  Building the blockchain...
 💿 Initializing the app...
 🗂  Initialize accounts...
-🙂 Added account alice with address cosmos1yjv5ks2f00n94xmqlgmjpj3y57d8vx88cr6z0a and mnemonic: victory chapter sausage giraffe danger moon spare magnet liberty need run toe wage shoot library card client sing achieve artwork deliver neck lonely cloud
-🙂 Added account bob with address cosmos15zd0rh5f9d2tdk95uf379wa9rlngv923zlt4zd and mnemonic: razor brick surround maple remove kangaroo there employ much recipe oxygen exact pioneer twenty fluid gauge grief there guitar off come year burst harbor
+🙂 Added account alice with address cosmos1qpwnlvalgdvzdzkgknr9cyeyujcqajhhv23vvy and mnemonic: tired brand urban dance act ten when blossom stereo control flavor year meadow sausage survey glance two insect exclude curious betray arrest near romance
+🙂 Added account bob with address cosmos1qz5rq46sa0hhysal7dtr36hm5mrle4p8e06xgt and mnemonic: slice syrup flee grid monster angle try still useless wall blast ridge axis hungry cancel envelope deer basic mimic before neglect few twice marble
 🌍 Tendermint node: http://0.0.0.0:26657
 🌍 Blockchain API: http://0.0.0.0:1317
 🌍 Token faucet: http://0.0.0.0:4500
+Saving genesis state...
+💿 Genesis state saved in /Users/tobias/.ignite/local-chains/checkers/exported_genesis.json
+aborted
 ```
 
 ```shell
 ❯ checkersd status
-{"NodeInfo":{"protocol_version":{"p2p":"8","block":"11","app":"0"},"id":"33c9ac248d9cc0851be83fa3670cacdd7a9b84ad","listen_addr":"tcp://0.0.0.0:26656","network":"checkers","version":"0.34.23","channels":"40202122233038606100","moniker":"mynode","other":{"tx_index":"on","rpc_address":"tcp://0.0.0.0:26657"}},"SyncInfo":{"latest_block_hash":"2E2DF05B4E0C4EEF45C732A77E7B2D3C58C1B09506597FCB1EC074313ED587F7","latest_app_hash":"B77B363AC8FBCCD5DF80A47EF12F50FDC119DEDD6183EA2343F287F934160E5E","latest_block_height":"45","latest_block_time":"2022-12-14T21:09:50.9129Z","earliest_block_hash":"6948315BD5F068EE6FE435620FD819264C32CCF73A7B350DF72F5164FE7FC01A","earliest_app_hash":"E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855","earliest_block_height":"1","earliest_block_time":"2022-12-14T21:08:59.288446Z","catching_up":false},"ValidatorInfo":{"Address":"E82A45A0893D145295886505D5AB04F285769209","PubKey":{"type":"tendermint/PubKeyEd25519","value":"HnVGaG32ySnCJ9wZbb5XjlfTgS8X1TX2Nmqz42SA9QA="},"VotingPower":"100"}}
+{"NodeInfo":{"protocol_version":{"p2p":"8","block":"11","app":"0"},"id":"930a3407aae3e0decf90a6febb93a0f342648fe7","listen_addr":"tcp://0.0.0.0:26656","network":"checkers","version":"0.34.23","channels":"40202122233038606100","moniker":"mynode","other":{"tx_index":"on","rpc_address":"tcp://0.0.0.0:26657"}},"SyncInfo":{"latest_block_hash":"20940A366BC1C2CA7D4EA8240B0F93B29011C61C988EA254A94CA6BEEA5894E1","latest_app_hash":"5A527FEA610F6B81AA82CACAFBB4FE8D1B462CDEADC03944DD4C055130FB4CA5","latest_block_height":"25","latest_block_time":"2022-12-17T15:31:09.262694Z","earliest_block_hash":"FCAB38A2E44B5B17CAD0D72FDFA9DE38C80C6C6CE3F90DEE5E3FCF5954E2AB86","earliest_app_hash":"E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855","earliest_block_height":"1","earliest_block_time":"2022-12-17T15:30:43.794687Z","catching_up":false},"ValidatorInfo":{"Address":"1C998ECDC4AD744885EDBE581A569F2ACCE018D9","PubKey":{"type":"tendermint/PubKeyEd25519","value":"jDO5I8H9DOYYczWrnLK2CCOqf/eGJmNDJv7qEjWE+vA="},"VotingPower":"100"}}
 ```
 
 ```shell
@@ -46,7 +46,6 @@ checkersd query --help
 
 ```shell
 ❯ ignite scaffold message createPost title body
-Your saved project changes have not been committed. To enable reverting to your current state, commit your saved changes. Do you want to proceed without committing your saved changes: y
 
 modify proto/checkers/checkers/tx.proto
 modify x/checkers/client/cli/tx.go
@@ -70,8 +69,6 @@ curl https://raw.githubusercontent.com/batkinson/checkers-go/a09daeb1548dd4cc014
 ❯ ignite scaffold single systemInfo nextId:uint \
     --module checkers \
     --no-message
-
-Your saved project changes have not been committed. To enable reverting to your current state, commit your saved changes. Do you want to proceed without committing your saved changes: y
 
 modify proto/checkers/checkers/genesis.proto
 modify proto/checkers/checkers/query.proto
