@@ -4,9 +4,9 @@ package alice.checkers.checkers;
 import "gogoproto/gogo.proto";
 import "google/api/annotations.proto";
 import "cosmos/base/query/v1beta1/pagination.proto";
-import "checkers/checkers/params.proto";
-import "checkers/checkers/system_info.proto";
-import "checkers/checkers/stored_game.proto";
+import "checkers/params.proto";
+import "checkers/system_info.proto";
+import "checkers/stored_game.proto";
 // this line is used by starport scaffolding # 1
 
 option go_package = "github.com/alice/checkers/x/checkers/types";
