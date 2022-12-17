@@ -268,3 +268,121 @@ pagination:
   total: "0"
 storedGame: []
 ```
+
+```shell
+❯ go test github.com/alice/checkers/x/checkers/keeper
+
+ok      github.com/alice/checkers/x/checkers/keeper     0.260s
+```
+
+```shell
+❯ checkersd tx checkers create-game $alice $bob --from $alice --gas auto
+
+gas estimate: 57682
+auth_info:
+  fee:
+    amount: []
+    gas_limit: "57682"
+    granter: ""
+    payer: ""
+  signer_infos: []
+  tip: null
+body:
+  extension_options: []
+  memo: ""
+  messages:
+  - '@type': /alice.checkers.checkers.MsgCreateGame
+    black: cosmos1qpwnlvalgdvzdzkgknr9cyeyujcqajhhv23vvy
+    creator: cosmos1qpwnlvalgdvzdzkgknr9cyeyujcqajhhv23vvy
+    red: cosmos1qz5rq46sa0hhysal7dtr36hm5mrle4p8e06xgt
+  non_critical_extension_options: []
+  timeout_height: "0"
+signatures: []
+confirm transaction before signing and broadcasting [y/N]: y
+code: 0
+codespace: ""
+data: 12350A2E2F616C6963652E636865636B6572732E636865636B6572732E4D736743726561746547616D65526573706F6E736512030A0131
+events:
+- attributes:
+  - index: true
+    key: ZmVl
+    value: ""
+  - index: true
+    key: ZmVlX3BheWVy
+    value: Y29zbW9zMXFwd25sdmFsZ2R2emR6a2drbnI5Y3lleXVqY3FhamhodjIzdnZ5
+  type: tx
+- attributes:
+  - index: true
+    key: YWNjX3NlcQ==
+    value: Y29zbW9zMXFwd25sdmFsZ2R2emR6a2drbnI5Y3lleXVqY3FhamhodjIzdnZ5LzI=
+  type: tx
+- attributes:
+  - index: true
+    key: c2lnbmF0dXJl
+    value: bjJUNFRyVFY4MGh0MlNPZEdPTWNIYnRrTWJXQ292M3FZNnRQeUlkVjZXRUN1Q0tWajhGdEFTZ0JuOG1IVWM4dWgrQURNVVVQSHNsTDBtM0tmY08xaXc9PQ==
+  type: tx
+- attributes:
+  - index: true
+    key: YWN0aW9u
+    value: L2FsaWNlLmNoZWNrZXJzLmNoZWNrZXJzLk1zZ0NyZWF0ZUdhbWU=
+  type: message
+gas_used: "55728"
+gas_wanted: "57682"
+height: "1546"
+info: ""
+logs:
+- events:
+  - attributes:
+    - key: action
+      value: /alice.checkers.checkers.MsgCreateGame
+    type: message
+  log: ""
+  msg_index: 0
+raw_log: '[{"msg_index":0,"events":[{"type":"message","attributes":[{"key":"action","value":"/alice.checkers.checkers.MsgCreateGame"}]}]}]'
+timestamp: ""
+tx: null
+txhash: 36747B8E60A0EDC02A36D6E8AFD5E9CB88D92080459A2BF48EA093F16A728647
+```
+
+```shell
+❯ checkersd query checkers show-system-info
+
+SystemInfo:
+  nextId: "2"
+```
+
+```shell
+❯ checkersd query checkers list-stored-game
+pagination:
+  next_key: null
+  total: "0"
+storedGame:
+- black: cosmos1qpwnlvalgdvzdzkgknr9cyeyujcqajhhv23vvy
+  board: '*b*b*b*b|b*b*b*b*|*b*b*b*b|********|********|r*r*r*r*|*r*r*r*r|r*r*r*r*'
+  index: "1"
+  red: cosmos1qz5rq46sa0hhysal7dtr36hm5mrle4p8e06xgt
+  turn: b
+```
+
+```shell
+❯ checkersd query checkers show-stored-game 1
+
+storedGame:
+  black: cosmos1qpwnlvalgdvzdzkgknr9cyeyujcqajhhv23vvy
+  board: '*b*b*b*b|b*b*b*b*|*b*b*b*b|********|********|r*r*r*r*|*r*r*r*r|r*r*r*r*'
+  index: "1"
+  red: cosmos1qz5rq46sa0hhysal7dtr36hm5mrle4p8e06xgt
+  turn: b
+```
+
+```shell
+❯ checkersd query checkers show-stored-game 1 --output json | jq ".storedGame.board" | sed 's/"//g' | sed 's/|/\n/g'
+*b*b*b*b
+b*b*b*b*
+*b*b*b*b
+********
+********
+r*r*r*r*
+*r*r*r*r
+r*r*r*r*
+```
