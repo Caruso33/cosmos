@@ -1,6 +1,6 @@
-import { Params } from "./types/checkers/checkers/params"
-import { StoredGame } from "./types/checkers/checkers/stored_game"
-import { SystemInfo } from "./types/checkers/checkers/system_info"
+import { Params } from "./types/checkers/params"
+import { StoredGame } from "./types/checkers/stored_game"
+import { SystemInfo } from "./types/checkers/system_info"
 
 
 export {     

@@ -119,3 +119,41 @@ create x/checkers/types/key_stored_game.go
 🛠  Building proto...
 ⛏️  Generated go code.
 ```
+
+```shell
+❯ go test github.com/alice/checkers/x/checkers/keeper
+ok      github.com/alice/checkers/x/checkers/keeper     0.351s
+```
+
+```shell
+❯ go test github.com/alice/checkers/x/checkers/types
+ok      github.com/alice/checkers/x/checkers/types      0.480s
+```
+
+```shell
+❯ cd x/checkers/types/ && go test
+
+PASS
+ok      github.com/alice/checkers/x/checkers/types      0.332s
+```
+
+`checkersd query checkers --help`
+
+```shell
+❯ checkersd query checkers show-system-info
+SystemInfo:
+  nextId: "1"
+```
+
+```shell
+❯ checkersd query checkers show-system-info --output json
+{"SystemInfo":{"nextId":"1"}}
+```
+
+```shell
+❯ checkersd query checkers list-stored-game
+pagination:
+  next_key: null
+  total: "0"
+storedGame: []
+```
