@@ -96,21 +96,21 @@ import (
 	ibcporttypes "github.com/cosmos/ibc-go/v5/modules/core/05-port/types"
 	ibchost "github.com/cosmos/ibc-go/v5/modules/core/24-host"
 	ibckeeper "github.com/cosmos/ibc-go/v5/modules/core/keeper"
-	"github.com/ignite/cli/ignite/pkg/openapiconsole"
 	"github.com/spf13/cast"
 	abci "github.com/tendermint/tendermint/abci/types"
 	tmjson "github.com/tendermint/tendermint/libs/json"
 	"github.com/tendermint/tendermint/libs/log"
 	tmos "github.com/tendermint/tendermint/libs/os"
 	dbm "github.com/tendermint/tm-db"
+	"github.com/ignite/cli/ignite/pkg/openapiconsole"
 
 	checkersmodule "github.com/alice/checkers/x/checkers"
-	checkersmodulekeeper "github.com/alice/checkers/x/checkers/keeper"
-	checkersmoduletypes "github.com/alice/checkers/x/checkers/types"
-	// this line is used by starport scaffolding # stargate/app/moduleImport
+		checkersmodulekeeper "github.com/alice/checkers/x/checkers/keeper"
+		checkersmoduletypes "github.com/alice/checkers/x/checkers/types"
+// this line is used by starport scaffolding # stargate/app/moduleImport
 
-	appparams "github.com/alice/checkers/app/params"
 	"github.com/alice/checkers/docs"
+	appparams "github.com/alice/checkers/app/params"
 )
 
 const (
@@ -166,7 +166,7 @@ var (
 		ica.AppModuleBasic{},
 		vesting.AppModuleBasic{},
 		checkersmodule.AppModuleBasic{},
-		// this line is used by starport scaffolding # stargate/app/moduleBasic
+// this line is used by starport scaffolding # stargate/app/moduleBasic
 	)
 
 	// module account permissions
@@ -239,8 +239,9 @@ type App struct {
 	ScopedTransferKeeper capabilitykeeper.ScopedKeeper
 	ScopedICAHostKeeper  capabilitykeeper.ScopedKeeper
 
-	CheckersKeeper checkersmodulekeeper.Keeper
-	// this line is used by starport scaffolding # stargate/app/keeperDeclaration
+	
+		CheckersKeeper checkersmodulekeeper.Keeper
+// this line is used by starport scaffolding # stargate/app/keeperDeclaration
 
 	// mm is the module manager
 	mm *module.Manager
@@ -285,7 +286,7 @@ func New(
 		ibctransfertypes.StoreKey, icahosttypes.StoreKey, capabilitytypes.StoreKey, group.StoreKey,
 		icacontrollertypes.StoreKey,
 		checkersmoduletypes.StoreKey,
-		// this line is used by starport scaffolding # stargate/app/storeKey
+// this line is used by starport scaffolding # stargate/app/storeKey
 	)
 	tkeys := sdk.NewTransientStoreKeys(paramstypes.TStoreKey)
 	memKeys := sdk.NewMemoryStoreKeys(capabilitytypes.MemStoreKey)
@@ -502,15 +503,17 @@ func New(
 		govConfig,
 	)
 
-	app.CheckersKeeper = *checkersmodulekeeper.NewKeeper(
-		appCodec,
-		keys[checkersmoduletypes.StoreKey],
-		keys[checkersmoduletypes.MemStoreKey],
-		app.GetSubspace(checkersmoduletypes.ModuleName),
-	)
-	checkersModule := checkersmodule.NewAppModule(appCodec, app.CheckersKeeper, app.AccountKeeper, app.BankKeeper)
+	
+		app.CheckersKeeper = *checkersmodulekeeper.NewKeeper(
+			appCodec,
+			keys[checkersmoduletypes.StoreKey],
+			keys[checkersmoduletypes.MemStoreKey],
+			app.GetSubspace(checkersmoduletypes.ModuleName),
+			
+			)
+		checkersModule := checkersmodule.NewAppModule(appCodec, app.CheckersKeeper, app.AccountKeeper, app.BankKeeper)
 
-	// this line is used by starport scaffolding # stargate/app/keeperDefinition
+		// this line is used by starport scaffolding # stargate/app/keeperDefinition
 
 	// Sealing prevents other modules from creating scoped sub-keepers
 	app.CapabilityKeeper.Seal()
@@ -556,7 +559,7 @@ func New(
 		transferModule,
 		icaModule,
 		checkersModule,
-		// this line is used by starport scaffolding # stargate/app/appModule
+// this line is used by starport scaffolding # stargate/app/appModule
 	)
 
 	// During begin block slashing happens after distr.BeginBlocker so that
@@ -586,7 +589,7 @@ func New(
 		paramstypes.ModuleName,
 		vestingtypes.ModuleName,
 		checkersmoduletypes.ModuleName,
-		// this line is used by starport scaffolding # stargate/app/beginBlockers
+// this line is used by starport scaffolding # stargate/app/beginBlockers
 	)
 
 	app.mm.SetOrderEndBlockers(
@@ -611,7 +614,7 @@ func New(
 		upgradetypes.ModuleName,
 		vestingtypes.ModuleName,
 		checkersmoduletypes.ModuleName,
-		// this line is used by starport scaffolding # stargate/app/endBlockers
+// this line is used by starport scaffolding # stargate/app/endBlockers
 	)
 
 	// NOTE: The genutils module must occur after staking so that pools are
@@ -641,7 +644,7 @@ func New(
 		upgradetypes.ModuleName,
 		vestingtypes.ModuleName,
 		checkersmoduletypes.ModuleName,
-		// this line is used by starport scaffolding # stargate/app/initGenesis
+// this line is used by starport scaffolding # stargate/app/initGenesis
 	)
 
 	// Uncomment if you want to set a custom migration order here.
@@ -671,7 +674,7 @@ func New(
 		ibc.NewAppModule(app.IBCKeeper),
 		transferModule,
 		checkersModule,
-		// this line is used by starport scaffolding # stargate/app/appModule
+// this line is used by starport scaffolding # stargate/app/appModule
 	)
 	app.sm.RegisterStoreDecoders()
 
@@ -870,7 +873,7 @@ func initParamsKeeper(appCodec codec.BinaryCodec, legacyAmino *codec.LegacyAmino
 	paramsKeeper.Subspace(icacontrollertypes.SubModuleName)
 	paramsKeeper.Subspace(icahosttypes.SubModuleName)
 	paramsKeeper.Subspace(checkersmoduletypes.ModuleName)
-	// this line is used by starport scaffolding # stargate/app/paramSubspace
+// this line is used by starport scaffolding # stargate/app/paramSubspace
 
 	return paramsKeeper
 }
