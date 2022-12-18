@@ -386,3 +386,223 @@ r*r*r*r*
 *r*r*r*r
 r*r*r*r*
 ```
+
+```shell
+❯ ignite scaffold message playMove gameIndex fromX:uint fromY:uint toX:uint toY:uint \
+    --module checkers \
+    --response capturedX:int,capturedY:int,winner
+
+modify proto/checkers/checkers/tx.proto
+modify x/checkers/client/cli/tx.go
+create x/checkers/client/cli/tx_play_move.go
+create x/checkers/keeper/msg_server_play_move.go
+modify x/checkers/module_simulation.go
+create x/checkers/simulation/play_move.go
+modify x/checkers/types/codec.go
+create x/checkers/types/message_play_move.go
+create x/checkers/types/message_play_move_test.go
+
+🎉 Created a message `playMove`.
+```
+
+```shell
+❯ checkersd tx checkers play-move 1 0 5 1 4 --from $bob
+auth_info:
+  fee:
+    amount: []
+    gas_limit: "200000"
+    granter: ""
+    payer: ""
+  signer_infos: []
+  tip: null
+body:
+  extension_options: []
+  memo: ""
+  messages:
+  - '@type': /alice.checkers.checkers.MsgPlayMove
+    creator: cosmos15w99g4kepz5tk6ee3xtn5c042kk3tmarjclvpx
+    fromX: "0"
+    fromY: "5"
+    gameIndex: "1"
+    toX: "1"
+    toY: "4"
+  non_critical_extension_options: []
+  timeout_height: "0"
+signatures: []
+confirm transaction before signing and broadcasting [y/N]: y
+code: 1105
+codespace: checkers
+data: ""
+events:
+- attributes:
+  - index: true
+    key: ZmVl
+    value: ""
+  - index: true
+    key: ZmVlX3BheWVy
+    value: Y29zbW9zMTV3OTlnNGtlcHo1dGs2ZWUzeHRuNWMwNDJrazN0bWFyamNsdnB4
+  type: tx
+- attributes:
+  - index: true
+    key: YWNjX3NlcQ==
+    value: Y29zbW9zMTV3OTlnNGtlcHo1dGs2ZWUzeHRuNWMwNDJrazN0bWFyamNsdnB4LzE=
+  type: tx
+- attributes:
+  - index: true
+    key: c2lnbmF0dXJl
+    value: ZjVDOE1uUHhHeXpTNzg0QTdCT1dHZFZOMUFWQzduOWR1QWFmaHM3SE9BOXdpYmpoczNjWXg0TFIveFBBZlJNeVRhK0dYZ2VZY3pmcms0UGRvUytRRFE9PQ==
+  type: tx
+gas_used: "45074"
+gas_wanted: "200000"
+height: "445"
+info: ""
+logs: []
+raw_log: 'failed to execute message; message index: 0: {red}: player tried to play
+  out of turn'
+timestamp: ""
+tx: null
+txhash: 847CBC9FF74F482829CBB13B0569F03D82E7CE03D2A2BCBA5F2680E38EB4DEA6
+```
+
+```shell
+❯ checkersd tx checkers play-move 1 1 0 0 1 --from $alice
+auth_info:
+  fee:
+    amount: []
+    gas_limit: "200000"
+    granter: ""
+    payer: ""
+  signer_infos: []
+  tip: null
+body:
+  extension_options: []
+  memo: ""
+  messages:
+  - '@type': /alice.checkers.checkers.MsgPlayMove
+    creator: cosmos1h2zh2p6clnv463fjvpzukx0e8nrj70tw0pzcq0
+    fromX: "1"
+    fromY: "0"
+    gameIndex: "1"
+    toX: "0"
+    toY: "1"
+  non_critical_extension_options: []
+  timeout_height: "0"
+signatures: []
+confirm transaction before signing and broadcasting [y/N]: y
+code: 1106
+codespace: checkers
+data: ""
+events:
+- attributes:
+  - index: true
+    key: ZmVl
+    value: ""
+  - index: true
+    key: ZmVlX3BheWVy
+    value: Y29zbW9zMWgyemgycDZjbG52NDYzZmp2cHp1a3gwZThucmo3MHR3MHB6Y3Ew
+  type: tx
+- attributes:
+  - index: true
+    key: YWNjX3NlcQ==
+    value: Y29zbW9zMWgyemgycDZjbG52NDYzZmp2cHp1a3gwZThucmo3MHR3MHB6Y3EwLzM=
+  type: tx
+- attributes:
+  - index: true
+    key: c2lnbmF0dXJl
+    value: Y2FxOTJkZEkzTk1vU0cxMGFmUnpwL3BNYWpkaHIzYWhMdnh2b2dKNDFBUXRXQ3E1cHN1OFBsSjVkd004Q2VMV1FVLzhCdWgxMTZBV2dBTk9yYjVMQ2c9PQ==
+  type: tx
+gas_used: "44964"
+gas_wanted: "200000"
+height: "477"
+info: ""
+logs: []
+raw_log: 'failed to execute message; message index: 0: Already piece at destination
+  position: {0 1}: wrong move'
+timestamp: ""
+tx: null
+txhash: EA8CADBF183BAD68CF4AFF2B21C54E409516CDACDC683F2F7D1EEEA6C6F446D3
+```
+
+```shell
+❯ checkersd tx checkers play-move 1 1 2 2 3 --from $alice
+
+auth_info:
+  fee:
+    amount: []
+    gas_limit: "200000"
+    granter: ""
+    payer: ""
+  signer_infos: []
+  tip: null
+body:
+  extension_options: []
+  memo: ""
+  messages:
+  - '@type': /alice.checkers.checkers.MsgPlayMove
+    creator: cosmos1h2zh2p6clnv463fjvpzukx0e8nrj70tw0pzcq0
+    fromX: "1"
+    fromY: "2"
+    gameIndex: "1"
+    toX: "2"
+    toY: "3"
+  non_critical_extension_options: []
+  timeout_height: "0"
+signatures: []
+confirm transaction before signing and broadcasting [y/N]: y
+code: 0
+codespace: ""
+data: 12490A2C2F616C6963652E636865636B6572732E636865636B6572732E4D7367506C61794D6F7665526573706F6E7365121908FFFFFFFFFFFFFFFFFF0110FFFFFFFFFFFFFFFFFF011A012A
+events:
+- attributes:
+  - index: true
+    key: ZmVl
+    value: ""
+  - index: true
+    key: ZmVlX3BheWVy
+    value: Y29zbW9zMWgyemgycDZjbG52NDYzZmp2cHp1a3gwZThucmo3MHR3MHB6Y3Ew
+  type: tx
+- attributes:
+  - index: true
+    key: YWNjX3NlcQ==
+    value: Y29zbW9zMWgyemgycDZjbG52NDYzZmp2cHp1a3gwZThucmo3MHR3MHB6Y3EwLzQ=
+  type: tx
+- attributes:
+  - index: true
+    key: c2lnbmF0dXJl
+    value: R3dXV2IrK2o5WStjMTFlTlBNMCtKbSsyR1ZCYW5ZVFlISUJXNk8vaFZGMDVKNnZTVVNQNk9QNjJtQkpIK3dENGk1UGdkSmpENThZYkQyZllFOHFuUmc9PQ==
+  type: tx
+- attributes:
+  - index: true
+    key: YWN0aW9u
+    value: L2FsaWNlLmNoZWNrZXJzLmNoZWNrZXJzLk1zZ1BsYXlNb3Zl
+  type: message
+gas_used: "52764"
+gas_wanted: "200000"
+height: "508"
+info: ""
+logs:
+- events:
+  - attributes:
+    - key: action
+      value: /alice.checkers.checkers.MsgPlayMove
+    type: message
+  log: ""
+  msg_index: 0
+raw_log: '[{"msg_index":0,"events":[{"type":"message","attributes":[{"key":"action","value":"/alice.checkers.checkers.MsgPlayMove"}]}]}]'
+timestamp: ""
+tx: null
+txhash: C225F43A5204CB2351A1EE7421CBA69F5F8799AE08C1DD0DDF47DBF22A996BCB
+```
+
+```shell
+❯ checkersd query checkers show-stored-game 1 --output json | jq ".storedGame.board" | sed 's/"//g' | sed 's/|/\n/g'
+
+*b*b*b*b
+b*b*b*b*
+***b*b*b
+**b*****
+********
+r*r*r*r*
+*r*r*r*r
+r*r*r*r*
+```
