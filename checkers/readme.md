@@ -1,5 +1,11 @@
 # cosmos
 
+## Template repo
+
+[b9lab checkers repo](https://github.com/cosmos/b9-checkers-academy-draft)
+
+Following the [Interchain Academy Course](https://interchainacademy.cosmos.network/ida-course/LPs/week-2/)
+
 ## Checkers
 
 ```shell
