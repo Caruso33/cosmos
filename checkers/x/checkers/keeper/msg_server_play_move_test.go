@@ -142,19 +142,19 @@ func TestPlayMoveCannotParseGame(t *testing.T) {
 	})
 }
 
-// func TestPlayMoveWrongOutOfTurn(t *testing.T) {
-// 	msgServer, _, context := setupMsgServerWithOneGameForPlayMove(t)
-// 	playMoveResponse, err := msgServer.PlayMove(context, &types.MsgPlayMove{
-// 		Creator:   carol,
-// 		GameIndex: "1",
-// 		FromX:     0,
-// 		FromY:     5,
-// 		ToX:       1,
-// 		ToY:       4,
-// 	})
-// 	require.Nil(t, playMoveResponse)
-// 	require.Equal(t, "{red}: player tried to play out of turn", err.Error())
-// }
+func TestPlayMoveWrongOutOfTurn(t *testing.T) {
+	msgServer, _, context := setupMsgServerWithOneGameForPlayMove(t)
+	playMoveResponse, err := msgServer.PlayMove(context, &types.MsgPlayMove{
+		Creator:   carol,
+		GameIndex: "1",
+		FromX:     0,
+		FromY:     5,
+		ToX:       1,
+		ToY:       4,
+	})
+	require.Nil(t, playMoveResponse)
+	require.Equal(t, "{red}: player tried to play out of turn", err.Error())
+}
 
 func TestPlayMoveWrongPieceAtDestination(t *testing.T) {
 	msgServer, _, context := setupMsgServerWithOneGameForPlayMove(t)

@@ -2,6 +2,7 @@ package keeper
 
 import (
 	"context"
+	"fmt"
 
 	"github.com/alice/checkers/x/checkers/rules"
 	"github.com/alice/checkers/x/checkers/types"
@@ -29,6 +30,8 @@ func (k msgServer) PlayMove(goCtx context.Context, msg *types.MsgPlayMove) (*typ
 	} else {
 		player = rules.RED_PLAYER
 	}
+
+	fmt.Println("Say bye", msg.Creator)
 
 	game, err := storedGame.ParseGame()
 	if err != nil {
