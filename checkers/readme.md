@@ -606,3 +606,260 @@ r*r*r*r*
 *r*r*r*r
 r*r*r*r*
 ```
+
+```shell
+❯ checkersd tx checkers play-move 1 0 5 1 4 --from $bob
+auth_info:
+  fee:
+    amount: []
+    gas_limit: "200000"
+    granter: ""
+    payer: ""
+  signer_infos: []
+  tip: null
+body:
+  extension_options: []
+  memo: ""
+  messages:
+  - '@type': /alice.checkers.checkers.MsgPlayMove
+    creator: cosmos15w99g4kepz5tk6ee3xtn5c042kk3tmarjclvpx
+    fromX: "0"
+    fromY: "5"
+    gameIndex: "1"
+    toX: "1"
+    toY: "4"
+  non_critical_extension_options: []
+  timeout_height: "0"
+signatures: []
+confirm transaction before signing and broadcasting [y/N]: y
+code: 0
+codespace: ""
+data: 12490A2C2F616C6963652E636865636B6572732E636865636B6572732E4D7367506C61794D6F7665526573706F6E7365121908FFFFFFFFFFFFFFFFFF0110FFFFFFFFFFFFFFFFFF011A012A
+events:
+- attributes:
+  - index: true
+    key: ZmVl
+    value: ""
+  - index: true
+    key: ZmVlX3BheWVy
+    value: Y29zbW9zMTV3OTlnNGtlcHo1dGs2ZWUzeHRuNWMwNDJrazN0bWFyamNsdnB4
+  type: tx
+- attributes:
+  - index: true
+    key: YWNjX3NlcQ==
+    value: Y29zbW9zMTV3OTlnNGtlcHo1dGs2ZWUzeHRuNWMwNDJrazN0bWFyamNsdnB4LzI=
+  type: tx
+- attributes:
+  - index: true
+    key: c2lnbmF0dXJl
+    value: RGhQRTlZbWVkVjF3U0I5aWY1dHc1MWIvT215MVZ5SG1OVzhZUndpeTZCQnU0L091b0NMRVJTNGppN1RlR2tZbmFwc09YU3UvbGMzZ3NxVWpUbTlrUmc9PQ==
+  type: tx
+- attributes:
+  - index: true
+    key: YWN0aW9u
+    value: L2FsaWNlLmNoZWNrZXJzLmNoZWNrZXJzLk1zZ1BsYXlNb3Zl
+  type: message
+- attributes:
+  - index: true
+    key: Y3JlYXRvcg==
+    value: Y29zbW9zMTV3OTlnNGtlcHo1dGs2ZWUzeHRuNWMwNDJrazN0bWFyamNsdnB4
+  - index: true
+    key: Z2FtZS1pbmRleA==
+    value: MQ==
+  - index: true
+    key: Y2FwdHVyZWQteA==
+    value: LTE=
+  - index: true
+    key: Y2FwdHVyZWQteQ==
+    value: LTE=
+  - index: true
+    key: d2lubmVy
+    value: Kg==
+  type: move-played
+gas_used: "52834"
+gas_wanted: "200000"
+height: "1445"
+info: ""
+logs:
+- events:
+  - attributes:
+    - key: action
+      value: /alice.checkers.checkers.MsgPlayMove
+    type: message
+  - attributes:
+    - key: creator
+      value: cosmos15w99g4kepz5tk6ee3xtn5c042kk3tmarjclvpx
+    - key: game-index
+      value: "1"
+    - key: captured-x
+      value: "-1"
+    - key: captured-y
+      value: "-1"
+    - key: winner
+      value: '*'
+    type: move-played
+  log: ""
+  msg_index: 0
+raw_log: '[{"msg_index":0,"events":[{"type":"message","attributes":[{"key":"action","value":"/alice.checkers.checkers.MsgPlayMove"}]},{"type":"move-played","attributes":[{"key":"creator","value":"cosmos15w99g4kepz5tk6ee3xtn5c042kk3tmarjclvpx"},{"key":"game-index","value":"1"},{"key":"captured-x","value":"-1"},{"key":"captured-y","value":"-1"},{"key":"winner","value":"*"}]}]}]'
+timestamp: ""
+tx: null
+txhash: 33C3343020C6ABE904949E082973B37DBA759D6B9A26E731A77C1B002F36A91A
+```
+
+```shell
+❯ checkersd query tx 33C3343020C6ABE904949E082973B37DBA759D6B9A26E731A77C1B002F36A91A --output json | jq ".raw_log | fromjson"
+[
+  {
+    "msg_index": 0,
+    "events": [
+      {
+        "type": "message",
+        "attributes": [
+          {
+            "key": "action",
+            "value": "/alice.checkers.checkers.MsgPlayMove"
+          }
+        ]
+      },
+      {
+        "type": "move-played",
+        "attributes": [
+          {
+            "key": "creator",
+            "value": "cosmos15w99g4kepz5tk6ee3xtn5c042kk3tmarjclvpx"
+          },
+          {
+            "key": "game-index",
+            "value": "1"
+          },
+          {
+            "key": "captured-x",
+            "value": "-1"
+          },
+          {
+            "key": "captured-y",
+            "value": "-1"
+          },
+          {
+            "key": "winner",
+            "value": "*"
+          }
+        ]
+      }
+    ]
+  }
+]
+```
+
+```shell
+❯ checkersd query checkers show-stored-game 1 --output json | jq ".storedGame.board" | sed 's/"//g' | sed 's/|/\n/g'
+
+*b*b*b*b
+b*b*b*b*
+***b*b*b
+**b*****
+*r******
+**r*r*r*
+*r*r*r*r
+r*r*r*r*
+```
+
+```shell
+❯ checkersd tx checkers play-move 1 2 3 0 5 --from $alice
+
+auth_info:
+  fee:
+    amount: []
+    gas_limit: "200000"
+    granter: ""
+    payer: ""
+  signer_infos: []
+  tip: null
+body:
+  extension_options: []
+  memo: ""
+  messages:
+  - '@type': /alice.checkers.checkers.MsgPlayMove
+    creator: cosmos1h2zh2p6clnv463fjvpzukx0e8nrj70tw0pzcq0
+    fromX: "2"
+    fromY: "3"
+    gameIndex: "1"
+    toX: "0"
+    toY: "5"
+  non_critical_extension_options: []
+  timeout_height: "0"
+signatures: []
+confirm transaction before signing and broadcasting [y/N]: y
+code: 0
+codespace: ""
+data: 12370A2C2F616C6963652E636865636B6572732E636865636B6572732E4D7367506C61794D6F7665526573706F6E73651207080110041A012A
+events:
+- attributes:
+  - index: true
+    key: ZmVl
+    value: ""
+  - index: true
+    key: ZmVlX3BheWVy
+    value: Y29zbW9zMWgyemgycDZjbG52NDYzZmp2cHp1a3gwZThucmo3MHR3MHB6Y3Ew
+  type: tx
+- attributes:
+  - index: true
+    key: YWNjX3NlcQ==
+    value: Y29zbW9zMWgyemgycDZjbG52NDYzZmp2cHp1a3gwZThucmo3MHR3MHB6Y3EwLzU=
+  type: tx
+- attributes:
+  - index: true
+    key: c2lnbmF0dXJl
+    value: b2xkc3ZsN1FBelFzdElJWHh5Rjg2YThqRFFGOHliMTB5UDhIUFZudjlpZHFia1ZpZlVsN3VZdVdiaHVVUnozYWVxeE16UDUxNVlKaElxYUlDNk54RkE9PQ==
+  type: tx
+- attributes:
+  - index: true
+    key: YWN0aW9u
+    value: L2FsaWNlLmNoZWNrZXJzLmNoZWNrZXJzLk1zZ1BsYXlNb3Zl
+  type: message
+- attributes:
+  - index: true
+    key: Y3JlYXRvcg==
+    value: Y29zbW9zMWgyemgycDZjbG52NDYzZmp2cHp1a3gwZThucmo3MHR3MHB6Y3Ew
+  - index: true
+    key: Z2FtZS1pbmRleA==
+    value: MQ==
+  - index: true
+    key: Y2FwdHVyZWQteA==
+    value: MQ==
+  - index: true
+    key: Y2FwdHVyZWQteQ==
+    value: NA==
+  - index: true
+    key: d2lubmVy
+    value: Kg==
+  type: move-played
+gas_used: "52744"
+gas_wanted: "200000"
+height: "1597"
+info: ""
+logs:
+- events:
+  - attributes:
+    - key: action
+      value: /alice.checkers.checkers.MsgPlayMove
+    type: message
+  - attributes:
+    - key: creator
+      value: cosmos1h2zh2p6clnv463fjvpzukx0e8nrj70tw0pzcq0
+    - key: game-index
+      value: "1"
+    - key: captured-x
+      value: "1"
+    - key: captured-y
+      value: "4"
+    - key: winner
+      value: '*'
+    type: move-played
+  log: ""
+  msg_index: 0
+raw_log: '[{"msg_index":0,"events":[{"type":"message","attributes":[{"key":"action","value":"/alice.checkers.checkers.MsgPlayMove"}]},{"type":"move-played","attributes":[{"key":"creator","value":"cosmos1h2zh2p6clnv463fjvpzukx0e8nrj70tw0pzcq0"},{"key":"game-index","value":"1"},{"key":"captured-x","value":"1"},{"key":"captured-y","value":"4"},{"key":"winner","value":"*"}]}]}]'
+timestamp: ""
+tx: null
+txhash: 16C1FA1C1C8B97D89D6899A36D51ED1283A9A828D591AAE931B8E07E0B784548
+```
