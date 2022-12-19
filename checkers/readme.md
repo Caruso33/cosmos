@@ -869,3 +869,30 @@ timestamp: ""
 tx: null
 txhash: 16C1FA1C1C8B97D89D6899A36D51ED1283A9A828D591AAE931B8E07E0B784548
 ```
+
+```shell
+❯ ignite scaffold message rejectGame gameIndex --module checkers
+
+
+modify proto/checkers/checkers/tx.proto
+modify x/checkers/client/cli/tx.go
+create x/checkers/client/cli/tx_reject_game.go
+create x/checkers/keeper/msg_server_reject_game.go
+modify x/checkers/module_simulation.go
+create x/checkers/simulation/reject_game.go
+modify x/checkers/types/codec.go
+create x/checkers/types/message_reject_game.go
+create x/checkers/types/message_reject_game_test.go
+
+🎉 Created a message `rejectGame`.
+```
+
+```shell
+❯ ignite chain build
+Cosmos SDK's version is: stargate - v0.46.6
+
+🛠  Building proto...
+📦 Installing dependencies...
+🛠  Building the blockchain...
+🗃  Installed. Use with: checkersd
+```
