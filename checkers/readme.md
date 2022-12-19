@@ -896,3 +896,84 @@ Cosmos SDK's version is: stargate - v0.46.6
 🛠  Building the blockchain...
 🗃  Installed. Use with: checkersd
 ```
+
+```shell
+checkersd tx checkers create-game $alice $bob --from $alice
+❯ checkersd tx checkers reject-game 1 --from $alice
+auth_info:
+  fee:
+    amount: []
+    gas_limit: "200000"
+    granter: ""
+    payer: ""
+  signer_infos: []
+  tip: null
+body:
+  extension_options: []
+  memo: ""
+  messages:
+  - '@type': /alice.checkers.checkers.MsgRejectGame
+    creator: cosmos18yhwy7005dc4ud2cmp5mczv8lrt5adatzwjttf
+    gameIndex: "1"
+  non_critical_extension_options: []
+  timeout_height: "0"
+signatures: []
+confirm transaction before signing and broadcasting [y/N]: y
+code: 0
+codespace: ""
+data: 12300A2E2F616C6963652E636865636B6572732E636865636B6572732E4D736752656A65637447616D65526573706F6E7365
+events:
+- attributes:
+  - index: true
+    key: ZmVl
+    value: ""
+  - index: true
+    key: ZmVlX3BheWVy
+    value: Y29zbW9zMTh5aHd5NzAwNWRjNHVkMmNtcDVtY3p2OGxydDVhZGF0endqdHRm
+  type: tx
+- attributes:
+  - index: true
+    key: YWNjX3NlcQ==
+    value: Y29zbW9zMTh5aHd5NzAwNWRjNHVkMmNtcDVtY3p2OGxydDVhZGF0endqdHRmLzM=
+  type: tx
+- attributes:
+  - index: true
+    key: c2lnbmF0dXJl
+    value: WWo2N2xMR2R3STB3UE1jOGxpWHpjNW9GL1k3MlFKdlZmSmphWVpmb2VLTmhaQ2FRc0hvM2FDWFFCWjd0NG8reDByei9vRjlpY3RmYTh2RnB0bmZxRkE9PQ==
+  type: tx
+- attributes:
+  - index: true
+    key: YWN0aW9u
+    value: L2FsaWNlLmNoZWNrZXJzLmNoZWNrZXJzLk1zZ1JlamVjdEdhbWU=
+  type: message
+- attributes:
+  - index: true
+    key: Y3JlYXRvcg==
+    value: Y29zbW9zMTh5aHd5NzAwNWRjNHVkMmNtcDVtY3p2OGxydDVhZGF0endqdHRm
+  - index: true
+    key: Z2FtZS1pbmRleA==
+    value: MQ==
+  type: game-rejected
+gas_used: "45944"
+gas_wanted: "200000"
+height: "64"
+info: ""
+logs:
+- events:
+  - attributes:
+    - key: creator
+      value: cosmos18yhwy7005dc4ud2cmp5mczv8lrt5adatzwjttf
+    - key: game-index
+      value: "1"
+    type: game-rejected
+  - attributes:
+    - key: action
+      value: /alice.checkers.checkers.MsgRejectGame
+    type: message
+  log: ""
+  msg_index: 0
+raw_log: '[{"msg_index":0,"events":[{"type":"game-rejected","attributes":[{"key":"creator","value":"cosmos18yhwy7005dc4ud2cmp5mczv8lrt5adatzwjttf"},{"key":"game-index","value":"1"}]},{"type":"message","attributes":[{"key":"action","value":"/alice.checkers.checkers.MsgRejectGame"}]}]}]'
+timestamp: ""
+tx: null
+txhash: 2E1A9F4E672FF4249F572DD48B1F37D1952AB34C8845E11E31CE41D8DAD9DB56
+```
